@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 public class Checkout_Dispatcher implements Dispatcher {
     
     /**
-     *
+     * Request to view the checkout page
      * @param request
-     * @return
+     * @return checkout page
      */
     @Override
     public String execute(HttpServletRequest request){

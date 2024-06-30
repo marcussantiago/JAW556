@@ -6,6 +6,7 @@
 package controller;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,6 +73,13 @@ public class Tbooks implements Serializable {
         this.isbn = isbn;
         this.price = price;
     }
+    
+    public Tbooks (String isbn, String title, String author, double price) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
 
     /**
      *
@@ -136,6 +144,12 @@ public class Tbooks implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
+    
+        public String getDollarPrice() {
+        DecimalFormat price = new DecimalFormat("0.00");
+        return ("$" + price.format(this.price));
+    }
+
 
     @Override
     public int hashCode() {

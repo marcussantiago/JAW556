@@ -10,7 +10,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import model.Book;
+//import model.Book;
+import controller.Tbooks;
 
 /**
  *
@@ -22,9 +23,9 @@ public class Title_Dispatcher implements Dispatcher {
     private EntityManager em;
     
     /**
-     *
+     * Request information on the list of books titles
      * @param request
-     * @return
+     * @return list of books
      */
     @Override
     public String execute(HttpServletRequest request){
@@ -38,7 +39,7 @@ public class Title_Dispatcher implements Dispatcher {
             HttpSession session = request.getSession();
             try {
 //                books = dao.getAllBooks();
-                books = em.createNamedQuery("Book.findAll", Book.class).getResultList();
+                books = em.createNamedQuery("Tbooks.findAll", Tbooks.class).getResultList();
                 session.setAttribute("Books", books);
                 emf.close();
                 nextPage = "/jsp/titles.jsp";

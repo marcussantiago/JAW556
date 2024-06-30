@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 public class Continue_Dispatcher implements Dispatcher {
     
     /**
-     *
+     * Request for titles
      * @param request
-     * @return
+     * @return Titles page
      */
     @Override
     public String execute(HttpServletRequest request){

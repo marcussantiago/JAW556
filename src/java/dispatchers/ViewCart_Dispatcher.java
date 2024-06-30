@@ -16,9 +16,9 @@ import javax.servlet.http.HttpSession;
 public class ViewCart_Dispatcher implements Dispatcher {
     
     /**
-     *
+     * Request to view the cart
      * @param request
-     * @return
+     * @return Cart
      */
     @Override
     public String execute(HttpServletRequest request){

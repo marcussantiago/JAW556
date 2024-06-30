@@ -19,9 +19,9 @@ import model.CartItem;
 public class UpdateCart_Dispatcher implements Dispatcher {
     
     /**
-     *
+     * Method to update the cart
      * @param request
-     * @return
+     * @return Updated cart
      */
     @Override
     public String execute(HttpServletRequest request){

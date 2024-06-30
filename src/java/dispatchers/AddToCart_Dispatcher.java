@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import model.Book;
+//import model.Book;
+import controller.Tbooks;
 import model.CartItem;
 
 /**
@@ -20,9 +21,9 @@ import model.CartItem;
 public class AddToCart_Dispatcher implements Dispatcher {
     
     /**
-     *
+     * Method to add books to the cart
      * @param request
-     * @return
+     * @return updated cart
      */
     @Override
     public String execute(HttpServletRequest request) {
@@ -37,7 +38,7 @@ public class AddToCart_Dispatcher implements Dispatcher {
             for (int i = 0; i < selectedBooks.length; i++) {
                 String isbn = selectedBooks[i];
                 int quantity = Integer.parseInt(request.getParameter(isbn));
-                Book book = this.getBookFromList(isbn, session);
+                Tbooks book = this.getBookFromList(isbn, session);
                 CartItem item = new CartItem(book);
                 item.setQuantity(quantity);
                 cart.put(isbn, item);
@@ -51,7 +52,7 @@ public class AddToCart_Dispatcher implements Dispatcher {
                     CartItem item = (CartItem) cart.get(isbn);
                     item.setQuantity(quantity);
                 } else {
-                    Book book = this.getBookFromList(isbn, session);
+                    Tbooks book = this.getBookFromList(isbn, session);
                     CartItem item = new CartItem(book);
                     item.setQuantity(quantity);
                     cart.put(isbn, item);
@@ -62,11 +63,11 @@ public class AddToCart_Dispatcher implements Dispatcher {
         return nextPage;
     }
 
-    private Book getBookFromList(String isbn, HttpSession session) {
+    private Tbooks getBookFromList(String isbn, HttpSession session) {
         List list = (List) session.getAttribute("Books");
-        Book aBook = null;
+        Tbooks aBook = null;
         for (int i = 0; i < list.size(); i++) {
-            aBook = (Book) list.get(i);
+            aBook = (Tbooks) list.get(i);
             if (isbn.equals(aBook.getIsbn())) {
                 break;
             }
